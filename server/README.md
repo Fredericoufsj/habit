@@ -29,4 +29,5 @@
 9 - cria uma const e salva os dados que foram buscado do prisma
 10 - Lembra que como é uma requisição, existe uma delay. Então a função deve ser assíncrona e a chamada recebe o await.
 #### Configurando o CORS
-** retomar no instante 41:17
+1 - Instalar CORS .. npm i @fastify/cors - isso é para permitir que o front consiga acessar dados do back
+2 - Importar e utilizar .. import cors from '@fastify/cors' .. app.register(cors)
