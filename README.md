@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/github/stars/lucasfontesgaspareto/nlw-setup-ignite?label=stars&message=MIT&color=white&labelColor=8257E5" alt="Stars">
 </p>
 
-![](./github/cover.png)
+![](./.github/cover.png)
 
 <br>
 <br>
