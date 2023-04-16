@@ -10,7 +10,7 @@
 6 - Alterar dentro do tsconfig.json "target":es2016, para "target":es2020
 7 - Instalar a dependencia de desenvolvimento tsx - "npm i tsx -D" .. essa dependencia permite utilizar o typescript com node sem que seja necessário nenhuma conversão.
 7.1 - Se quiser rodar o arquivo e ver que não vai daar erro, faça: npx tsx src/server.ts
-8 - Adicionar um script para facilitar rodar as aplicações. "dev": "npx watch src/server.ts" - Agora para rodar basta digitar "npm run dev" ... o watch serve para que toda vez que mudarmos alguma coisa no script, ele executar novamente o script. Serve para ver as alterações em tempo real.
+8 - Adicionar um script para facilitar rodar as aplicações. "dev": "tsx watch src/server.ts" - Agora para rodar basta digitar "npm run dev" ... o watch serve para que toda vez que mudarmos alguma coisa no script, ele executar novamente o script. Serve para ver as alterações em tempo real.
 #### Criando a primeira rota
 1 - Importar o fastify
 2 - utilizar o método que importamos .. const app = fastify();
@@ -22,6 +22,7 @@
 2 - npm i @prisma/client
 3 - npx prisma init --datasource-provider SQLite
 4 - criar as tabelas no schema.prisma
+4.1 - Instalar a extensão do prisma
 5 - npx prisma migrate dev .. cria os migrations e a tabela no banco
 6 - npx prisma studio  ..  abri uma interface para navegar no banco de dados
 7 - importar o prismaClient
@@ -29,5 +30,5 @@
 9 - cria uma const e salva os dados que foram buscado do prisma
 10 - Lembra que como é uma requisição, existe uma delay. Então a função deve ser assíncrona e a chamada recebe o await.
 #### Configurando o CORS
-1 - Instalar CORS .. npm i @fastify/cors - isso é para permitir que o front consiga acessar dados do back
+1 - Instalar CORS .. npm i @fastify/cors - isso é para permitir que o front consiga acessar dados do back(restringe quem pode acessar)
 2 - Importar e utilizar .. import cors from '@fastify/cors' .. app.register(cors)
