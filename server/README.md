@@ -1,5 +1,6 @@
 # Habit-app
 ## Passo a passo do desenvolvimento dessa aplicação.
+### Aula-1
 #### Preparando o ambiente de desenvolvimento - Setup TypeScript
 1 - Instale o node, ou atualize para a versão estável mais recente.
 2 - Crie o package.json com o comando npm init -y .. será criada a pasta node_modules
@@ -32,3 +33,33 @@
 #### Configurando o CORS
 1 - Instalar CORS .. npm i @fastify/cors - isso é para permitir que o front consiga acessar dados do back(restringe quem pode acessar)
 2 - Importar e utilizar .. import cors from '@fastify/cors' .. app.register(cors)
+
+### Aula-2 - Estrutura do banco de dados
+#### Diagramação do Banco de dados
+#### Criação das tabelas no Banco de dados
+1 - Dentro de schema, criar as novas tabelas necessarias.
+2 - Fazer o migration. - npx prisma migrate dev
+#### Criação do relacionamento entre as tabelas no Banco de dados
+4 - Fazer o migration - npx prisma migrate dev
+5 - Instalar dependencias para vizualizar os diagramas entidade/relacionamento - npm i -D prisma-erd-generator @mermaid-js/mermaid-cli
+5.1 - Inseriar no schema.prisma - generator erd {
+  provider = "prisma-erd-generator"
+}
+5.2 - Para ver o diagrama - npx prisma generate
+#### Criação do seed do Banco de dados
+6 - Criar um arquivo seed(serve para popular o BD com informações fake)
+6.1 - Acessa o prisma.io e procure por seeding. Abra seeding your database. Copiei o exemplo e limpe a função. E siga a documentação.
+6.2 - Altere o que a documentação formeceu para - "prisma": {
+  "seed": "tsx prisma/seed.ts"
+}
+6.3 - Criei um habito dentro do seed.ts do seguinte jeito - 
+await prisma.habit.deleteMany()
+await prisma.habit.create({
+    data:{
+        title:'Beber 2L de água',
+        created_at: new Date('2023-01-10T00:00:00.000z')
+    }
+  })
+6.4 - Rodar o prisma com o comando para criar os mocks- npx prisma db seed
+6.5 - Rodar npx prisma studio
+6.6 - Substituir o conteudo do seed.ts pelo fornecido pela rocketseat
