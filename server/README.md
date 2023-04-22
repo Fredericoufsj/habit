@@ -63,3 +63,27 @@ await prisma.habit.create({
 6.4 - Rodar o prisma com o comando para criar os mocks- npx prisma db seed
 6.5 - Rodar npx prisma studio
 6.6 - Substituir o conteudo do seed.ts pelo fornecido pela rocketseat
+#### Isolando arquivos do back-end
+7 - Separa os arquivos da aplicação - como a conexão com banco será usada várias vezes é melhor deixar ela separada
+7.1 - Criar a pasta lib dentro do src, e criar o arquivo prisma.ts. Copiar a importação do prisma e a conexão para lá.
+7.2 - Criar o arquivo routes.ts dentro da pasta src. Passar as rotas para ele. Criar uma função assincrona, exportar essa função e colocar as rotas dentro dele. O "app" ficará dando erro, para resolver importamos - import {FastifyInstance} from 'fastify';. Tipar o parâmetro "app" - app:FastifyInstace
+importa o prisma - import {prisma} from lib.prisma.ts
+7.3 - Para utilizar a rota, chamar o arquivo criado dentro de server.ts - app.register(appRoutes)
+
+#### Criação das rotas no back-end
+1 - Criação de novo Hábito
+1.1 - Primeiro instalar e importar o zod. Uma lib para validação e tipagem - npm i zod e import {z} from zod;
+2 - Detalhe do dia(hábitos completos/possíveis)
+3 - Toggle do hábito do dia
+4 - Resumo de dias
+
+#### Front-end web
+
+1 - Estrutura da homepage
+2 - Componente: Header
+3 - Tabela de hábitos diários
+4 - Geração de range de dias
+5 - Preenchimento de dias no fim
+6 - Adicionado scroll horizontal
+
+#### Mobile - 
