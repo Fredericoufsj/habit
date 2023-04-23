@@ -66,14 +66,27 @@ await prisma.habit.create({
 #### Isolando arquivos do back-end
 7 - Separa os arquivos da aplicação - como a conexão com banco será usada várias vezes é melhor deixar ela separada
 7.1 - Criar a pasta lib dentro do src, e criar o arquivo prisma.ts. Copiar a importação do prisma e a conexão para lá.
-7.2 - Criar o arquivo routes.ts dentro da pasta src. Passar as rotas para ele. Criar uma função assincrona, exportar essa função e colocar as rotas dentro dele. O "app" ficará dando erro, para resolver importamos - import {FastifyInstance} from 'fastify';. Tipar o parâmetro "app" - app:FastifyInstace
-importa o prisma - import {prisma} from lib.prisma.ts
+7.2 - Criar o arquivo routes.ts dentro da pasta src. Passar as rotas para ele. Criar uma função assincrona, exportar essa função e colocar as rotas dentro dele. O "app" ficará dando erro, para resolver importamos - import {FastifyInstance} from 'fastify';. Tipar o parâmetro "app" - app:FastifyInstace. Importa o prisma - import {prisma} from lib.prisma.ts
 7.3 - Para utilizar a rota, chamar o arquivo criado dentro de server.ts - app.register(appRoutes)
 
 #### Criação das rotas no back-end
-1 - Criação de novo Hábito
+1 - Criação da Rota de novo Hábito
 1.1 - Primeiro instalar e importar o zod. Uma lib para validação e tipagem - npm i zod e import {z} from zod;
-2 - Detalhe do dia(hábitos completos/possíveis)
+1.2 - Apagamos a rota que tem e criamos uma rota do tipo post com o caminho '/habits'. O segundo parâmetro é uma função async passando como parâmetro uma request. Dentro dessa request pode ser acessado(params, query(os que tem ?) e body). Usaremos o body.
+1.3 - É uma requisição do tipo post. Então estarei enviando informações. Portando o parâmetro request, dentro do função.
+1.4 - Criar validações para verificar se os dados realmente vieram. Como Já importei o zod, agora vou usá-lo. Isso se assemelha um pouco
+como fazer a tipagem com typescript. Depois de criar essa validação, coloco ela envolta do request.body - createHabitBody.parse(request.body)
+1.5 - Criar um novo habito.
+1.6 - instalar a lib dayjs - npm i dayjs - Essa lib é para poder zerar a hora do dia, de modo que se uma pessoa criar um habito no meio do dia, ele poder utilizar esse habito naquele mesmo dia, senão ele poderia não conseguir usar.
+1.7 - Utilizar o dayjs - const today = dayjs().startOf('day').toDate() e transformar no formato de data do javascript com toDate()
+1.8 - Testar pelo postman e depois congerir pelo prisma studio. Não dá pra verificar pelo navegador por ser uma requisição post.
+2 - Criar Rota de Detalhe do dia(hábitos completos/possíveis)
+2.1 - Criar uma rota com o endereço '/day' e a função(segundo parâmetro) recebe um request como parâmetro. Detro dessa função assincrona fazemos:
+criar uma const que vai tipar e converter a request, que vai ser do tipo query. Para converter a data usamos o 'coerce'. do zod.
+criar uma const para buscar os habitos possíveis usando a função findmany e passando um where que deve ser especificado.
+
+COntinuar.. minuto 50
+
 3 - Toggle do hábito do dia
 4 - Resumo de dias
 
