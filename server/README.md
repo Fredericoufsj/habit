@@ -81,11 +81,13 @@ como fazer a tipagem com typescript. Depois de criar essa validação, coloco el
 1.7 - Utilizar o dayjs - const today = dayjs().startOf('day').toDate() e transformar no formato de data do javascript com toDate()
 1.8 - Testar pelo postman e depois congerir pelo prisma studio. Não dá pra verificar pelo navegador por ser uma requisição post.
 2 - Criar Rota de Detalhe do dia(hábitos completos/possíveis)
-2.1 - Criar uma rota com o endereço '/day' e a função(segundo parâmetro) recebe um request como parâmetro. Detro dessa função assincrona fazemos:
+2.1 - Criar uma rota com o endereço '/day' e a função(segundo parâmetro) recebe um request como parâmetro. Essa rota é para buscar os hábitos possíveis e os que já foram completados. Dentro dessa função assincrona fazemos:
 criar uma const que vai tipar e converter a request, que vai ser do tipo query. Para converter a data usamos o 'coerce'. do zod.
-criar uma const para buscar os habitos possíveis usando a função findmany e passando um where que deve ser especificado.
+criar uma const para buscar os habitos possíveis usando a função findmany e passando um where que deve ser especificado. Por exemplo, limitamos a que a busca ocorra apenas em datas posteriores a criação do habito. Também podemos encadear vários item dentro do where, de modo que pode-se incluir um item weekDays:{some:{week_day}} isso quer dizer que buscamos onde weekDays tenha algum dia da semana.
+2.2 - Fazer a requisição via postman, por exemplo - http://localhost:3333/day?date=2023-04-23T00:00:00.000z
+2.3 - No prisma.ts adicionar log:['query'] - vai ficar assim,  export const prisma = new PrismaClient({log:['query']}); para vermos os logs.
+2.4 - Criar também uma const e guardar o os habitos completados
 
-COntinuar.. minuto 50
 
 3 - Toggle do hábito do dia
 4 - Resumo de dias
