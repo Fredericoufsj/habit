@@ -15,3 +15,6 @@ Acessar o projeto - cd web.
 3.6 - Dentro do arquivo tailwind.config.cjs, dentro do content colocar - content: ['./src/**/*.tsx','./index.html']
 3.7 - Agora pode usar o tailwind, por exemplo: <div className="bg-zinc-900 w-10 h-10 text-white rounded m-2 flex items-center justify-center">
 4 - Criar um componente "Habit.tsx" 
+
+5 - Dentro de tailwind.config extender as configurações de cor e definir uma cor. - theme: { extend: {colors:{background: '#09090A'}},},
+5.1 - Utilizar na classe body - <body class="bg-background">
