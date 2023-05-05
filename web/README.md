@@ -18,3 +18,5 @@ Acessar o projeto - cd web.
 
 5 - Dentro de tailwind.config extender as configurações de cor e definir uma cor. - theme: { extend: {colors:{background: '#09090A'}},},
 5.1 - Utilizar na classe body - <body class="bg-background">
+6.1 - importar a lib de icons, phosphorIcons - npm i phosphor-react
+6.1 - importar no projeto - import { plus } from "phosphor-react"
